@@ -2,7 +2,7 @@
 ## BENJAMIN DANNEVILLE                              ##
 ## bdGenerator                                      ##
 ##                                                  ##
-## Version : 0.1.3                                  ##
+## Version : 0.1.4                                  ##
 ## Date : Septembre 2021                            ##
 ## Website : https://www.benjamindanneville.com/    ##
 ######################################################
@@ -116,9 +116,9 @@ cmds.window(bdGenerator_win, widthHeight=(370, 170))
 # Add a single column layout to add controls into 
 cmds.columnLayout(adjustableColumn=True) 
 
-cmds.text("\n1 - Select all the blocking groups that you want to apply Generator to", align='left')
-cmds.text("2 - Select all the config groups containing the locator", align='left')
-cmds.text("\n3 - Click the Generate Button !", align='left')
+cmds.text("\n1 - Select all the blocking groups that you want to generate", align='left')
+cmds.text("2 - Select all the config groups containing the locators", align='left')
+cmds.text("\n3 - Click the Generate button !", align='left')
 cmds.text("   - You can generate new seeds by clicking on random\n", align='left')
 
 # Add controls to the Layout 

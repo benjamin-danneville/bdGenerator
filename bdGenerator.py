@@ -7,9 +7,26 @@
 ## Website : https://www.benjamindanneville.com/    ##
 ######################################################
 
+#########
+## LIB ##
+#########
+
 import maya.cmds as cmds
 import maya.mel as mel
 import random
+
+import sys
+
+from PySide2 import QtCore
+from PySide2 import QtWidgets
+from shiboken2 import wrapInstance
+
+import maya.OpenMayaUI as omui
+
+
+############
+## GLOBAL ##
+############
 
 geoDuplicatedObj_grp_list =[]
 
@@ -104,30 +121,50 @@ def RandomButton(_):
     cmds.delete(geoDuplicatedObj_grp_list)
     Generator(0)
 
+########
+## UI ##
+########
 
+#Return maya main window as QWidget
+def maya_main_window():
+    main_window_ptr = omui.MQtUtil.mainWindow()
+    return wrapInstance(long(main_window_ptr), QtWidgets.QWidget)
 
-bdGenerator_win = 'bdGenerator'
+class bdGeneratorWindow(QtWidgets.QDialog):
+    def __init__(self, parent=maya_main_window()):
+        super(bdGeneratorWindow, self).__init__(parent)
 
-if cmds.window(bdGenerator_win, exists=True):
-    cmds.deleteUI(bdGenerator_win)
+        #Window title and minimum width
+        self.setWindowTitle("bdGenerator")
+        self.setMinimumWidth(320)
 
-# Start with the Window 
-cmds.window(bdGenerator_win, widthHeight=(370, 170)) 
-# Add a single column layout to add controls into 
-cmds.columnLayout(adjustableColumn=True) 
+        #Remove Question Mark
+        self.setWindowFlags(self.windowFlags() ^ QtCore.Qt.WindowContextHelpButtonHint)
 
-cmds.text("\n1 - Select all the blocking groups that you want to generate", align='left')
-cmds.text("2 - Select all the config groups containing the locators", align='left')
-cmds.text("\n3 - Click the Generate button !", align='left')
-cmds.text("   - You can generate new seeds by clicking on random\n", align='left')
+        #Method Calling
+        self.create_widgets()
+        self.create_layouts()
+    
+    def create_widgets(self):
+        self.textInstruction = QtWidgets.QLabel("Select all the blocking groups that you want to generate\nSelect all the config groups containing the locators\nClick the Generate button !", alignment=QtCore.Qt.AlignCenter)
+        self.textRandom = QtWidgets.QLabel("You can generate new seeds by clicking on Random\n", alignment=QtCore.Qt.AlignCenter)
+        self.buttonGen = QtWidgets.QPushButton("Generate")
+        self.buttonGen.clicked.connect(GeneratorButton)
+        self.buttonRan = QtWidgets.QPushButton("Random")
+        self.buttonRan.clicked.connect(RandomButton)
 
-# Add controls to the Layout 
-cmds.button( label="Generate", command=GeneratorButton) 
-cmds.button( label="Random", command=RandomButton) 
+    def create_layouts(self):
+        #Creating main layout as vertical layout with (self) parent, which is the TestDialog
+        main_layout = QtWidgets.QVBoxLayout(self)
+        main_layout.addWidget(self.textInstruction)
+        main_layout.addWidget(self.textRandom)
+        main_layout.addWidget(self.buttonGen)
+        main_layout.addWidget(self.buttonRan)
 
-#Credits
-cmds.text("-------------------------------------------------------------------------------------------", align='left')
-cmds.text("copyright Benjamin Danneville                                          licence GNU GPL", align='left')
- 
-# Display the window 
-cmds.showWindow(bdGenerator_win)
+try:
+    Dialog.close()
+except NameError:
+    pass
+
+Dialog = bdGeneratorWindow()
+Dialog.show()

@@ -2,7 +2,7 @@
 ## BENJAMIN DANNEVILLE                              ##
 ## bdGenerator                                      ##
 ##                                                  ##
-## Version : 0.1.4                                  ##
+## Version : 0.1.5                                  ##
 ## Date : Septembre 2021                            ##
 ## Website : https://www.benjamindanneville.com/    ##
 ######################################################

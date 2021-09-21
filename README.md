@@ -20,3 +20,6 @@ import bdGenerator
 reload(bdGenerator)
 
 4- Launch the script by pressing the button you've just created
+
+For instructions on how to use it, check my video here:
+https://www.benjamindanneville.com/generateur

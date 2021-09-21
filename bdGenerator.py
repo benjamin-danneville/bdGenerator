@@ -148,6 +148,8 @@ class bdGeneratorWindow(QtWidgets.QDialog):
     def create_widgets(self):
         self.textInstruction = QtWidgets.QLabel("Select all the blocking groups that you want to generate\nSelect all the config groups containing the locators\nClick the Generate button !", alignment=QtCore.Qt.AlignCenter)
         self.textRandom = QtWidgets.QLabel("You can generate new seeds by clicking on Random\n", alignment=QtCore.Qt.AlignCenter)
+        self.creditName = QtWidgets.QLabel("copyright Benjamin Danneville", alignment=QtCore.Qt.AlignLeft)
+        self.creditLicense = QtWidgets.QLabel("licence GNU GPL", alignment=QtCore.Qt.AlignRight)
         self.buttonGen = QtWidgets.QPushButton("Generate")
         self.buttonGen.clicked.connect(GeneratorButton)
         self.buttonRan = QtWidgets.QPushButton("Random")
@@ -156,10 +158,19 @@ class bdGeneratorWindow(QtWidgets.QDialog):
     def create_layouts(self):
         #Creating main layout as vertical layout with (self) parent, which is the TestDialog
         main_layout = QtWidgets.QVBoxLayout(self)
-        main_layout.addWidget(self.textInstruction)
-        main_layout.addWidget(self.textRandom)
-        main_layout.addWidget(self.buttonGen)
-        main_layout.addWidget(self.buttonRan)
+        content_layout = QtWidgets.QVBoxLayout(self)
+        credit_layout = QtWidgets.QHBoxLayout(self)
+
+        content_layout.addWidget(self.textInstruction)
+        content_layout.addWidget(self.textRandom)
+        content_layout.addWidget(self.buttonGen)
+        content_layout.addWidget(self.buttonRan)
+        
+        credit_layout.addWidget(self.creditName)
+        credit_layout.addWidget(self.creditLicense)
+
+        main_layout.addLayout(content_layout)
+        main_layout.addLayout(credit_layout)
 
 try:
     Dialog.close()

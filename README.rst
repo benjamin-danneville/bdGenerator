@@ -5,8 +5,8 @@ bdGenerator
 Script made in Python for Maya 2022 and before
 
 .. image:: https://readthedocs.org/projects/bdgenerator/badge/?version=latest
-:target: https://bdgenerator.readthedocs.io/en/latest/?badge=latest
-:alt: Documentation Status
+   :target: https://bdgenerator.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
 
 Documentation
 =============

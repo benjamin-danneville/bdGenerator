@@ -8,14 +8,17 @@ Script made in Python for Maya 2022 and before
    :target: https://bdgenerator.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
 
-.. |PyPI license| image:: https://img.shields.io/pypi/l/ansicolortags.svg
+.. image:: https://img.shields.io/pypi/l/ansicolortags.svg
    :target: https://pypi.python.org/pypi/ansicolortags/
+   :alt: License
 
-.. |made-with-python| image:: https://img.shields.io/badge/Made%20with-Python-1f425f.svg
+.. image:: https://img.shields.io/badge/Made%20with-Python-1f425f.svg
    :target: https://www.python.org/
+   :alt: Made with Python
 
-.. |made-with-sphinx-doc| image:: https://img.shields.io/badge/Made%20with-Sphinx-1f425f.svg
+.. image:: https://img.shields.io/badge/Made%20with-Sphinx-1f425f.svg
    :target: https://www.sphinx-doc.org/
+   :alt: Made with Sphinx Documentation
 
 Documentation
 =============

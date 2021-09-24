@@ -8,9 +8,8 @@ Script made in Python for Maya 2022 and before
    :target: https://bdgenerator.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
 
-.. image:: https://img.shields.io/pypi/l/ansicolortags.svg
-   :target: https://pypi.python.org/pypi/ansicolortags/
-   :alt: License
+.. image:: https://img.shields.io/github/license/benjamin-danneville/bdGenerator.js.svg
+   :target: https://github.com/benjamin-danneville/bdGenerator.js/blob/master/LICENSE
 
 .. image:: https://img.shields.io/badge/Made%20with-Python-1f425f.svg
    :target: https://www.python.org/

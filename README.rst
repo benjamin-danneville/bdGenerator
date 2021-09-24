@@ -13,6 +13,11 @@ Documentation
 
 Read the documentation online at http://bdgenerator.rtfd.io/
 
+Source Code
+===========
+
+https://github.com/benjamin-danneville/bdGenerator
+
 Contact
 =======
 

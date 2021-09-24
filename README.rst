@@ -21,5 +21,5 @@ https://github.com/benjamin-danneville/bdGenerator
 Contact
 =======
 
-|My website: https://www.benjamindanneville.com/
-|My LinkedIn: https://www.linkedin.com/in/benjamin-danneville/
+| My website: https://www.benjamindanneville.com/
+| My LinkedIn: https://www.linkedin.com/in/benjamin-danneville/

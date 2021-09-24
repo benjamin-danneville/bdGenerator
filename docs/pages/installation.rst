@@ -1,11 +1,9 @@
-######################################################
-## BENJAMIN DANNEVILLE                              ##
-## bdGenerator                                      ##
-##                                                  ##
-## Version : 0.1.5                                  ##
-## Date : Septembre 2021                            ##
-## Website : https://www.benjamindanneville.com/    ##
-######################################################
+============
+Installation
+============
+
+This will cover how to install the bdGenerator script 
+on Maya 2020 and Maya 2022 (With Python 3).
 
 1- Rename 'bdGenerator-master' folder containing the README.md, bdGenerator.py and logo folder into 'bdGenerator'
 

@@ -11,7 +11,7 @@ Blocking
 
 A blocking is composed of several groups, containing only meshes
 
-.. image:: images/Blocking_Outline.png
+.. image:: scene_requirement/images/Blocking_Outline.png
 
 -------------
 Configuration

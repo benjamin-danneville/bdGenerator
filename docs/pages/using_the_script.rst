@@ -2,7 +2,7 @@
 Using the script
 ================
 
-.. contents:: Requirements
+.. contents:: Overview
    :depth: 2
 
 ---------

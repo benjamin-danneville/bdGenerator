@@ -11,7 +11,7 @@ Welcome to bdGenerator's documentation!
    :caption: Contents:
 
    pages/installation
-   pages/scene_requirement/scene_requirement
+   pages/scene_requirement_page/scene_requirement
    pages/rst_doc
 
 

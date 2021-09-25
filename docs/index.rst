@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to bdGenerator's documentation!
-=======================================
+bdGenerator's Documentation
+===========================
 
 .. toctree::
    :maxdepth: 2
@@ -16,10 +16,14 @@ Welcome to bdGenerator's documentation!
    pages/rst_doc
 
 
-Indices and tables
-==================
+Source
+======
 
 * Source code: https://github.com/benjamin-danneville/bdGenerator
+
+Contact
+=======
+
 * My website: https://www.benjamindanneville.com/
 * My LinkedIn: https://www.linkedin.com/in/benjamin-danneville/
 

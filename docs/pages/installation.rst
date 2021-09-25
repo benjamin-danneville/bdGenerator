@@ -3,29 +3,73 @@ Installation
 ============
 
 .. contents:: Overview
-   :depth: 2
+   :depth: 3
 
-| This will cover how to install the bdGenerator script 
-| on Maya 2020 and Maya 2022 (With Python 3).
 
-| 1- Download `bdGenerator.py <https://www.google.com>`
-|    and put it into the folder Documents/maya/scripts/
+| This will cover how to install the bdGenerator script on Maya 2020 and Maya 2022 (With Python 3).
 
-3- Copy/paste this into your script editor, select everything and drop it into your selected shelf and select Python :
+Installation of the script
+==========================
 
-import sys
-sys.path.append("C:/Users/Benjamin/Documents/maya/scripts/bdGenerator")
+| 1- Download `bdGenerator.py`_ and put it into the folder Documents/maya/scripts/
 
-import bdGenerator
-reload(bdGenerator)
+.. _bdGenerator.py: https://raw.githubusercontent.com/benjamin-danneville/bdGenerator/master/bdGenerator.py
 
-4- Launch the script by pressing the button you've just created
-
+--------------------
 Maya 2020 (Python 2)
-====================
+--------------------
 
+| 2- Copy/paste this into your python script editor in Maya
+
+.. code:: python
+
+   import bdGenerator
+   reload(bdGenerator) 
+
+.. image:: images/installation/Maya2020_ScriptEditorPaste.png
+
+| 3- Select everything and drag it with the left mouse button onto your shelf and select python
+
+.. image:: images/installation/PythonShelf.png
+
+--------------------
 Maya 2022 (Python 3)
-====================
+--------------------
 
-For instructions on how to use it, check my video here:
-https://www.benjamindanneville.com/generateur
+| 2- Copy/paste this into your python script editor in Maya
+
+.. code:: python
+
+   import importlib
+
+   import bdGenerator
+   importlib.reload(bdGenerator) 
+
+.. image:: images/installation/Maya2022_ScriptEditorPaste.png
+
+| 3- Select everything and drag it with the left mouse button onto your shelf and select python
+
+.. image:: images/installation/PythonShelf.png
+
+Adding the logo
+===============
+
+| You should now have the basic python logo in the shelf that represents your script
+
+.. image:: images/installation/ShelfBaseLogo.png
+
+| Now, if you want to have a more fancy logo, download my `bdGenerator Logo`_
+
+.. _bdGenerator Logo: https://raw.githubusercontent.com/benjamin-danneville/bdGenerator/master/logo/bdGenerator.png
+
+
+| Now to replace the python logo by this one, just right click on the button and hit **edit**
+| In the **"Shelves"** tab, click on the Icon Name folder and go find the logo you just downloaded
+
+.. image:: images/installation/ShelvesEditorBrowse.png
+
+| Now it should look like this !
+
+.. image:: images/installation/ShelfbdGeneratorLogo.png
+
+| The installation of the script is done

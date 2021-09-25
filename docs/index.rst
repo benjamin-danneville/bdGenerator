@@ -12,6 +12,7 @@ Welcome to bdGenerator's documentation!
 
    pages/installation
    pages/scene_requirement
+   pages/rst_doc
 
 
 Indices and tables

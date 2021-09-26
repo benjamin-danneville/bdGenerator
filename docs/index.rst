@@ -13,7 +13,6 @@ bdGenerator's Documentation
    pages/installation
    pages/scene_requirement
    pages/using_the_script
-   pages/rst_doc
 
 
 Source

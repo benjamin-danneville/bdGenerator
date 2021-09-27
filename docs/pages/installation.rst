@@ -56,20 +56,20 @@ Adding the icon
 
 | You should now have the basic python icon in the shelf that represents your script
 
-.. image:: images/installation/ShelfBaseLogo.png
+.. image:: images/installation/ShelfBaseIcon.png
 
 | Now, if you want to have a more fancy icon, download my `bdGenerator Icon`_
 
-.. _bdGenerator Icon: https://raw.githubusercontent.com/benjamin-danneville/bdGenerator/master/logo/bdGenerator.png
+.. _bdGenerator Icon: https://raw.githubusercontent.com/benjamin-danneville/bdGenerator/master/icon/bdGenerator.png
 
 
-| Now to replace the python logo by this one, just right click on the button and hit **edit**
-| In the **"Shelves"** tab, click on the Icon Name folder and go find the logo you just downloaded
+| Now to replace the python icon by this one, just right click on the button and hit **edit**
+| In the **"Shelves"** tab, click on the Icon Name folder and go find the icon you just downloaded
 
 .. image:: images/installation/ShelvesEditorBrowse.png
 
 | Now it should look like this !
 
-.. image:: images/installation/ShelfbdGeneratorLogo.png
+.. image:: images/installation/ShelfbdGeneratorIcon.png
 
 | The installation of the script is done

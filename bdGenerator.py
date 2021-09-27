@@ -1,11 +1,11 @@
-######################################################
-## BENJAMIN DANNEVILLE                              ##
-## bdGenerator                                      ##
-##                                                  ##
-## Version : 0.1.5                                  ##
-## Date : Septembre 2021                            ##
-## Website : https://www.benjamindanneville.com/    ##
-######################################################
+##############################################################
+## BENJAMIN DANNEVILLE                                      ##
+## bdGenerator                                              ##
+##                                                          ##
+## Version : 0.1.6                                          ##
+## Date : Septembre 2021                                    ##
+## Website : https://www.benjamindanneville.com/generateur  ##
+##############################################################
 
 #########
 ## LIB ##
@@ -23,19 +23,24 @@ from shiboken2 import wrapInstance
 
 import maya.OpenMayaUI as omui
 
+#############
+## GLOBALS ##
+#############
 
-############
-## GLOBAL ##
-############
-
+#Stock latest groups created from last generation
 geoDuplicatedObj_grp_list =[]
-
-#Vient enregistrer les items selectionner dans une liste
+#Stock selected objects from last generation
 selection_list = []
 
+###############
+## FUNCTIONS ##
+###############
+
 def Generator(reset):
-        #Append global
-    #if selection_list == []:
+    ## Handling both buttons ##
+    ###########################
+    
+    #Reset selection list only if we "Gsenerate"
     if reset == 1:
         selection_list[:] = []
         selection = cmds.ls(sl=True)
@@ -44,75 +49,72 @@ def Generator(reset):
     else:
         selection = selection_list
 
-    ##############
     ## Variable ##
     ##############
 
-    #Liste que l'on va remplir de nos groupes de blocking que l'on veut remplacer, et des groupes de configurations de locator
+    #Lists appended with the blocking's and configuration's groups
     config_grp_list = []
     geo_grp_list = []
     
-    #########################
-    ## TRIE DE MES GROUPES ##
-    #########################
+    ## SORTING GROUPS ##
+    ####################
 
-    #Boucle autant de fois que de groupe selectionner
     for i in range(len(selection)):
-        #Si la shape du premier objet de mon groupe est un locator, alors on ajoute ce groupe dans la liste de groupe de config
+        #If first shape under selected groups' first object correspond to a locator, it's a configuration group 
         if (cmds.nodeType(cmds.listRelatives(cmds.listRelatives(selection[i])[0])[0]) == "locator"):
             config_grp_list.append(selection[i])
-        #Si la shape du premier objet de mon groupe est un mesh/geo , alors on ajoute ce groupe dans la liste de groupe de geo
+        #If first shape under selected groups' first object correspond to a locator, it's a blocking group
         elif (cmds.nodeType(cmds.listRelatives(cmds.listRelatives(selection[i])[0])[0]) == "mesh"):
             geo_grp_list.append(selection[i])
 
-    ##############################
-    ## BOUCLE QUI VA TOUT FAIRE ##
-    ##############################
+    ## Assembling ##
+    ################
 
-    #Clearing list to be able to change that list
     geoDuplicatedObj_grp_list[:] = []
-    #Boucle : Pour chaque groupe dans ma liste de groupe de geo/mesh
+
     for geo_grp in geo_grp_list:
-        #On remet a 0 l'iteration afin d'avoir pour chaque groupe de geo selectionne, une nomenclature commencant au debut, et non depuis la derniere iteration du dernier groupe
+
         iteration = 0
         
-        #Creation du groupe contenant toutes mes objets pour chaque groupe selectionne
+        #Creating group and appending my list to be able to regenerate it with "Random" button
         geoDuplicatedObj_grp = cmds.group( em=True, name=geo_grp[0:-3] + "All_grp")
         geoDuplicatedObj_grp_list.append(geoDuplicatedObj_grp)
 
-        #Boucle : Pour chaque mesh dans mon groupe geo/mesh
         for geo in cmds.listRelatives(geo_grp):
             iteration += 1
 
-            #Groupe pour chaque objet remplacant un objet du blocking
+            #Creating group containing the assembly of objects
             obj_grp = cmds.group( em=True, name=geo_grp[0:-3] + str(iteration) + "_grp")
 
-            #On choisit parmis les differentes configurations d'objets possibles
+            #Choosing one configurations from the list
             random_config = random.choice(config_grp_list)
 
-            #Boucle : Pour chaque locator dans mon groupe de configuration choisit precedemment
-            for clockPart in cmds.listRelatives(random_config):
-                #"locator" ici est en fait la shape de notre objet, et nous n'en voulons pas pour la suite donc nous ne le "sortons" de notre iteration, les locator sont en fait de type "transform" et leur shape de type "locator"
-                if not cmds.nodeType(clockPart) == "locator" :
-                    #On va chercher le nom de nos variations de modelisation, situe dans l'attr en question
-                    variationObj_input = cmds.getAttr(clockPart + ".Variation_obj")
-                    #on separe la str en liste pour qu'elle soit utilisable
+            for locator in cmds.listRelatives(random_config):
+                #We have to exclude the shape of our configuration group, so that only the locators are left
+                if not cmds.nodeType(locator) == "locator" :
+                    variationObj_input = cmds.getAttr(locator + ".Variation_obj")
                     variationObj_output = variationObj_input.split(",")
-                    #on pC(parentConstraint) pour venir deplacer l'objet(la variation aleatoire) a l'endroit exact de notre locator de la config choisit et on delete la pC
+                    #Choosing one of the possible meshes
                     randomObj_variation = random.choice(variationObj_output)   
                     duplicated = cmds.duplicate(randomObj_variation, n=randomObj_variation[0:-3] + "DUPLICATED_" + str(iteration) + "_geo")
-                    cmds.parentConstraint(clockPart, duplicated, mo=False)
+                    #Moving it to our locator
+                    cmds.parentConstraint(locator, duplicated, mo=False)
                     cmds.delete(duplicated[0] + "_parentConstraint1")
 
-                    #On parent l'objet sous le groupe cree precedemment et on center pivot afin de bien pouvoir deplacer le groupe plus tard
+                    #Moving the object under the assembly group
                     cmds.parent(duplicated, obj_grp)
-                    cmds.select(obj_grp)
-                    mel.eval("CenterPivot;")
-            #On deplace l'objet creee au niveau de l'objet du blocking que l'on veut remplacer
+            #Center pivot the assembly group so that it correspond to the center of all objects inside.        
+            cmds.select(obj_grp)
+            mel.eval("CenterPivot;")
+            #Moving the assembly group to an object from the blocking group
             cmds.parentConstraint(geo, obj_grp)
             cmds.delete(obj_grp + "_parentConstraint1")
-            #On parent l'objet sous l'equivalent du groupe geo selectionne que l'on a creer en debut de boucle
+            #Parenting it under a group containing all assembled groups
             cmds.parent(obj_grp, geoDuplicatedObj_grp)
+
+############
+## Button ##
+############
 
 def GeneratorButton(_):
     Generator(1)
@@ -130,6 +132,7 @@ def maya_main_window():
     main_window_ptr = omui.MQtUtil.mainWindow()
     return wrapInstance(long(main_window_ptr), QtWidgets.QWidget)
 
+#Extended QDialog Widget
 class bdGeneratorWindow(QtWidgets.QDialog):
     def __init__(self, parent=maya_main_window()):
         super(bdGeneratorWindow, self).__init__(parent)
@@ -156,7 +159,7 @@ class bdGeneratorWindow(QtWidgets.QDialog):
         self.buttonRan.clicked.connect(RandomButton)
 
     def create_layouts(self):
-        #Creating main layout as vertical layout with (self) parent, which is the TestDialog
+        #Creating main vertical layout containg a vertical layout and a horizontal one
         main_layout = QtWidgets.QVBoxLayout(self)
         content_layout = QtWidgets.QVBoxLayout(self)
         credit_layout = QtWidgets.QHBoxLayout(self)
@@ -172,10 +175,12 @@ class bdGeneratorWindow(QtWidgets.QDialog):
         main_layout.addLayout(content_layout)
         main_layout.addLayout(credit_layout)
 
+#If Dialog exists, it deletes it
 try:
     Dialog.close()
 except NameError:
     pass
 
+#Show extend QDialog
 Dialog = bdGeneratorWindow()
 Dialog.show()

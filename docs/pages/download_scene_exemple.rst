@@ -4,11 +4,11 @@ Download scene exemple
 
 
 
-| Here you can download the scene exemple to check
-| if you installed the script the right way.
+| Here you can download the scene exemple to check if 
+| you installed the script the right way.
 |
 | Also, you can have fun with the configurations
-| by adding locator, removing or moving ones to understand how it works.
+| by adding locators, removing or moving ones to understand how it works.
 | 
 | Download it `here`_ !
 

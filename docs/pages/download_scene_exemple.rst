@@ -2,6 +2,8 @@
 Download scene exemple
 ======================
 
+
+
 | Here you can download the scene exemple to check
 | if you installed the script the right way.
 |
@@ -10,4 +12,4 @@ Download scene exemple
 | 
 | Download it `here`_ !
 
-.. _here: https://raw.githubusercontent.com/benjamin-danneville/bdGenerator/master/bdGenerator.py
+.. _here: https://drive.google.com/file/d/1k__revOQIn6Xs78llMnPevAOBh-_RhVT/view?usp=sharing

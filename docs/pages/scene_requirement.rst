@@ -11,13 +11,13 @@ Setup
 
 | The setup is composed of meshes and configurations.
 | The meshes correspond to the final 3D models that will replace the blocking.
-| The configurations allows you to set 
-| how the meshes assembles together to form the final 3D model.
+| The configurations allows you to set how the meshes 
+| assembles together to form the final 3D model.
 |
 | I recommend you two things :
  
-- Have the Setup and the Blocking on two different maya folder, 
-  so that you can just import the Setup into the blocking scene 
+- Have the Setup and the Blocking on two different maya scenes, 
+  so that you can just import the Setup into the Blocking scene 
   and then delete it after you've generated you're final scene
  
 - Group everything under this organization where ``geoSetup_grp`` contains your Meshes and ``configSetup_grp`` contains your Configuration groups
@@ -69,15 +69,15 @@ Configurations
 | It's important because otherwise, the script can not make the difference 
 | between a configuration group and a blocking group
 | 
-| **Each locators must have a string attribute named ``Variation_obj`` :**
+| **Each locators must have a string attribute named "Variation_obj" :**
 | The ``Variation_obj`` attribute will be the emplacement where we will put
 | the name of the meshes that the locator can take. It will take a random mesh
-| from the list and place at the locator's position.
+| from the list and place it at the locator's position.
 
 Purpose of the configurations
 -----------------------------
 
-| Having configurations allows you to have differents setup so that you can have controls over
+| Having configurations allows you to have different setups so that you can have controls over
 | what you are generating. For exemple if we continue on our clock exemple, 
 | we could have a configuration for grounded clocks and walled clocks. 
 | But we could go further, if you wanted for instance a circular clock,
@@ -123,7 +123,7 @@ The string attributes Variation_obj
 | 
 | Now for exemple if we want the top locator to take the top Meshes as variation
 | So that when it will generate it will choose between the different top meshes,
-| just add the meshes to the top locator's Variation_obj attribute
+| just add the meshes' name to the top locator's Variation_obj attribute
 
 .. image:: images/scene_requirement/Setup_Variation_obj_MeshesLink.png
 
@@ -133,7 +133,7 @@ Blocking
 
 - Blocking groups only contains meshes
 - Every meshes has a different names
-- Blocking groups must be named with ``_grp`` at the end
+- Blocking groups must be named with "_grp" at the end
 - Meshes has not been freeze transformed
 
 .. image:: images/scene_requirement/Blocking_Outline.png

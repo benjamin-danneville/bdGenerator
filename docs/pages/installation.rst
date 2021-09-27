@@ -6,7 +6,8 @@ Installation
    :depth: 3
 
 
-| This will cover how to install the bdGenerator script on Maya 2020 and Maya 2022 (With Python 3).
+| This will cover how to install the bdGenerator script 
+| on Maya 2020 (Python 2) and Maya 2022 (Python 3).
 
 Installation of the script
 ==========================

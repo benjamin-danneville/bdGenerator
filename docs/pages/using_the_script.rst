@@ -11,7 +11,7 @@ Launching
 | Once you're setup has been created and you have you're blocking, you're ready to go.
 | If you installed it right, just click on the button
 
-.. image:: images/installation/ShelfbdGeneratorLogo.png
+.. image:: images/installation/ShelfbdGeneratorIcon.png
 
 | It should open this
 

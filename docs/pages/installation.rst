@@ -51,16 +51,16 @@ Maya 2022 (Python 3)
 
 .. image:: images/installation/PythonShelf.png
 
-Adding the logo
+Adding the icon
 ===============
 
-| You should now have the basic python logo in the shelf that represents your script
+| You should now have the basic python icon in the shelf that represents your script
 
 .. image:: images/installation/ShelfBaseLogo.png
 
-| Now, if you want to have a more fancy logo, download my `bdGenerator Logo`_
+| Now, if you want to have a more fancy icon, download my `bdGenerator Icon`_
 
-.. _bdGenerator Logo: https://raw.githubusercontent.com/benjamin-danneville/bdGenerator/master/logo/bdGenerator.png
+.. _bdGenerator Icon: https://raw.githubusercontent.com/benjamin-danneville/bdGenerator/master/logo/bdGenerator.png
 
 
 | Now to replace the python logo by this one, just right click on the button and hit **edit**

@@ -98,11 +98,11 @@ def Generator(reset):
                     randomObj_variation = random.choice(variationObj_output)   
                     duplicated = cmds.duplicate(randomObj_variation, n=randomObj_variation[0:-3] + "DUPLICATED_" + str(iteration) + "_geo")
                     #Moving it to our locator
-                    cmds.parentConstraint(locator, duplicated, mo=False)
+                    cmds.parentConstraint(locator, duplicated[0], mo=False)
                     cmds.delete(duplicated[0] + "_parentConstraint1")
 
                     #Moving the object under the assembly group
-                    cmds.parent(duplicated, obj_grp)
+                    cmds.parent(duplicated[0], obj_grp)
             #Center pivot the assembly group so that it correspond to the center of all objects inside.        
             cmds.select(obj_grp)
             mel.eval("CenterPivot;")
